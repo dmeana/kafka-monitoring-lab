@@ -1,49 +1,87 @@
-# TODO: Implement Kafka Producer
 import random
 import time
 from datetime import datetime, timezone
 import uuid
 import json
+from kafka import KafkaProducer
 
-# --- Configuración ---
-# Lista exacta de servidores que pide el enunciado
+# ==============================================================================
+# CONFIGURACIÓN DEL PRODUCTOR
+# ==============================================================================
+
+# Identificadores de los servidores monitorizados en la simulación.
 SERVER_IDS = ["web01", "web02", "db01", "app01", "cache01"]
-REPORTING_INTERVAL_SECONDS = 10  # Tiempo de espera entre cada ciclo 
+
+# Intervalo de tiempo (en segundos) entre el envío de cada bloque de métricas.
+REPORTING_INTERVAL_SECONDS = 10
+
+# Nombre del topic de Kafka de destino. 
+TOPIC_NAME = "system-metrics-topic" 
+
+# Dirección IP y puerto del broker de Kafka.
+KAFKA_BROKER = "127.0.0.1:29092" 
+
 
 def main():
-    print("Iniciando simulación de generación de métricas (Modo Prueba: Sin Kafka)...")
-    print(f"Servidores simulados: {SERVER_IDS}")
-    print(f"Intervalo de reporte: {REPORTING_INTERVAL_SECONDS} segundos")
-    print("-" * 30)
+    print("Inicializando Productor de métricas para Apache Kafka...")
+    
+    # ==========================================================================
+    # 1. INICIALIZACIÓN DEL CLIENTE KAFKA
+    # ==========================================================================
+    try:
+        # Instanciación de KafkaProducer.
+        # value_serializer: Función lambda para serializar diccionarios Python 
+        # a formato JSON y codificarlos en bytes (UTF-8) para su transmisión.
+        producer = KafkaProducer(
+            bootstrap_servers=[KAFKA_BROKER],
+            value_serializer=lambda m: json.dumps(m).encode('utf-8')
+        )
+        print(f"[*] Conexión establecida con Kafka en {KAFKA_BROKER}")
+    except Exception as e:
+        print(f"[!] Error crítico de conexión con el broker: {e}")
+        return
 
+    print(f"[*] Servidores configurados: {SERVER_IDS}")
+    print(f"[*] Topic objetivo: {TOPIC_NAME}")
+    print("-" * 50)
+
+    # ==========================================================================
+    # 2. BUCLE PRINCIPAL DE GENERACIÓN Y ENVÍO DE MÉTRICAS
+    # ==========================================================================
     try:
         while True:
-            print(f"\n[{datetime.now().strftime('%H:%M:%S')}] Generando reporte de métricas...")
+            current_time = datetime.now().strftime('%H:%M:%S')
+            print(f"\n[{current_time}] Iniciando recolección de métricas...")
 
-            # Iterar sobre cada servidor para generar sus métricas individualmente
+            # Iteración sobre el inventario de servidores
             for server_id in SERVER_IDS:
-
-                # --- 1. SIMULACIÓN MATEMÁTICA ---
-                # Uso de CPU base (5% - 75%)
+                
+                # --- A. Simulación de variables de estado ---
+                
+                # Métrica: Uso de CPU (%)
+                # Generación base (5-75%) con probabilidad del 10% de pico de carga (85-98%)
                 cpu_percent = random.uniform(5.0, 75.0)
-                if random.random() < 0.1:  # 10% de probabilidad de tener un pico de CPU
+                if random.random() < 0.1: 
                     cpu_percent = random.uniform(85.0, 98.0)
 
-                # Uso de Memoria base (20% - 85%)
+                # Métrica: Uso de Memoria (%)
+                # Generación base (20-85%) con probabilidad del 5% de pico de carga (90-99%)
                 memory_percent = random.uniform(20.0, 85.0)
-                if random.random() < 0.05:  # 5% de probabilidad de tener un pico de RAM
+                if random.random() < 0.05: 
                     memory_percent = random.uniform(90.0, 99.0)
 
-                # Disco y Red
+                # Métricas: I/O de Disco (MB/s) y Tráfico de Red (Mbps)
                 disk_io_mbps = random.uniform(0.1, 50.0)
                 network_mbps = random.uniform(1.0, 100.0)
 
-                # Simulación de errores (poco frecuentes)
+                # Métrica: Tasa de Errores
+                # Probabilidad del 8% de registrar entre 1 y 3 errores en el ciclo actual
                 error_count = 0
-                if random.random() < 0.08:  # 8% de probabilidad de tener algún error
+                if random.random() < 0.08: 
                     error_count = random.randint(1, 3)
 
-                # --- 2. CREACIÓN DEL MENSAJE JSON ---
+                # --- B. Estructuración del cuerpo del mensaje (JSON) ---
+                # Construcción del diccionario conforme a la especificación requerida
                 metric_message = {
                     "server_id": server_id,
                     "timestamp_utc": datetime.now(timezone.utc).isoformat(),
@@ -54,19 +92,33 @@ def main():
                         "network_mbps": round(network_mbps, 2),
                         "error_count": error_count
                     },
-                    "message_uuid": str(uuid.uuid4()) # Identificador único
+                    "message_uuid": str(uuid.uuid4())
                 }
 
-                # --- 3. SALIDA POR PANTALLA (Para comprobar que funciona) ---
-                print(f" -> Generado para {server_id}:")
-                # Imprimimos el JSON formateado para que sea fácil de leer
-                print(json.dumps(metric_message, indent=2))
+                # --- C. Transmisión del mensaje ---
+                producer.send(TOPIC_NAME, value=metric_message)
+                print(f"    [+] Métrica enviada - Servidor: {server_id}")
+
+            # Forzar la escritura de los buffers locales hacia el broker
+            producer.flush()
+            print(f"[*] Ciclo completado. Intervalo de espera: {REPORTING_INTERVAL_SECONDS}s")
             
-            print(f"\nReporte completo de los 5 servidores generado. Esperando {REPORTING_INTERVAL_SECONDS} segundos...")
+            # Suspensión del hilo hasta el próximo ciclo
             time.sleep(REPORTING_INTERVAL_SECONDS)
 
+    # ==========================================================================
+    # 3. MANEJO DE EXCEPCIONES Y LIMPIEZA DE RECURSOS
+    # ==========================================================================
     except KeyboardInterrupt:
-        print("\nSimulación detenida manualmente por el usuario.")
+        print("\n[*] Ejecución interrumpida por señal de usuario (SIGINT).")
+    except Exception as e:
+        print(f"\n[!] Excepción no controlada durante el ciclo principal: {e}")
+    finally:
+        # Garantizar el cierre del socket de conexión con el broker
+        print("[*] Procediendo al cierre ordenado del cliente Kafka...")
+        if 'producer' in locals():
+            producer.close()
+        print("[*] Proceso finalizado.")
 
 if __name__ == "__main__":
     main()
