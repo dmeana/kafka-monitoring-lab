@@ -98,7 +98,7 @@ def main():
             # al reiniciar, evitando la pérdida de datos.
             consumer.commit()
             
-            print(f"[{obtener_hora()}] [+] Métrica de {server} guardada en Mongo | ID: {result.inserted_id}")
+            print(f"[{obtener_hora()}] [+] Métrica de {server} guardada en Mongo | ID: {result.inserted_id}| Offset: {message.offset}")
 
     except KeyboardInterrupt:
         print(f"\n[{obtener_hora()}] [*] Ejecución interrumpida por el usuario (SIGINT).")

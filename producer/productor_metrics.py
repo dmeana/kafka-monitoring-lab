@@ -103,9 +103,22 @@ def main():
                     "message_uuid": str(uuid.uuid4())
                 }
 
-                # --- C. Transmisión del mensaje ---
-                producer.send(TOPIC_NAME, value=metric_message)
-                print(f"    [{obtener_hora()}] [+] Métrica enviada - Servidor: {server_id}")
+                # --- C. Transmisión del mensaje CON RECIBO DE ENTREGA (Síncrono) ---
+                try:
+                    # producer.send() es asíncrono por defecto. Al encadenar .get(timeout=10),
+                    # bloqueamos la ejecución un máximo de 10 segundos esperando el "ACK" (Acuse de recibo)
+                    # del broker de Kafka. Esto garantiza una trazabilidad de extremo a extremo.
+                    respuesta_kafka = producer.send(TOPIC_NAME, value=metric_message).get(timeout=10)
+                    
+                    # Extraemos de los metadatos el número de secuencia exacto (Offset) 
+                    # que el clúster le ha asignado al mensaje. Fundamental para auditoría de datos.
+                    offset_asignado = respuesta_kafka.offset
+                    
+                    print(f"    [{obtener_hora()}] [+] Métrica enviada - Servidor: {server_id} | Offset Kafka: {offset_asignado}")
+                    
+                except Exception as e:
+                    # Capturamos posibles Timeouts, desconexiones súbitas o rechazos del broker
+                    print(f"    [{obtener_hora()}] [!] Error de transmisión a Kafka (Servidor {server_id}): {e}")
 
             # Forzar la escritura de los buffers locales hacia el broker
             producer.flush()
