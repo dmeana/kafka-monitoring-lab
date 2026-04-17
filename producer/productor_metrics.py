@@ -19,9 +19,18 @@ REPORTING_INTERVAL_SECONDS = 10
 TOPIC_NAME = "system-metrics-topic" 
 
 # Dirección IP y puerto del broker de Kafka.
-KAFKA_BROKER = "127.0.0.1:29092" 
+KAFKA_BROKER = "127.0.0.1:29092"
 
+# ==============================================================================
+# FUNCIÓN AUXILIAR
+# ==============================================================================
+def obtener_hora():
+    """Devuelve la hora actual formateada para los logs."""
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+# ==============================================================================
+# FUNCIÓN PRINCIPAL
+# ============================================================================== 
 def main():
     print("Inicializando Productor de métricas para Apache Kafka...")
     
@@ -36,13 +45,13 @@ def main():
             bootstrap_servers=[KAFKA_BROKER],
             value_serializer=lambda m: json.dumps(m).encode('utf-8')
         )
-        print(f"[*] Conexión establecida con Kafka en {KAFKA_BROKER}")
+        print(f"[{obtener_hora()}] [*] Conexión establecida con Kafka en {KAFKA_BROKER}")
     except Exception as e:
-        print(f"[!] Error crítico de conexión con el broker: {e}")
+        print(f"[{obtener_hora()}] [!] Error crítico de conexión con el broker: {e}")
         return
 
-    print(f"[*] Servidores configurados: {SERVER_IDS}")
-    print(f"[*] Topic objetivo: {TOPIC_NAME}")
+    print(f"[{obtener_hora()}] [*] Servidores configurados: {SERVER_IDS}")
+    print(f"[{obtener_hora()}] [*] Topic objetivo: {TOPIC_NAME}")
     print("-" * 50)
 
     # ==========================================================================
@@ -50,8 +59,7 @@ def main():
     # ==========================================================================
     try:
         while True:
-            current_time = datetime.now().strftime('%H:%M:%S')
-            print(f"\n[{current_time}] Iniciando recolección de métricas...")
+            print(f"\n[{obtener_hora()}] Iniciando recolección de métricas...")
 
             # Iteración sobre el inventario de servidores
             for server_id in SERVER_IDS:
@@ -97,11 +105,11 @@ def main():
 
                 # --- C. Transmisión del mensaje ---
                 producer.send(TOPIC_NAME, value=metric_message)
-                print(f"    [+] Métrica enviada - Servidor: {server_id}")
+                print(f"    [{obtener_hora()}] [+] Métrica enviada - Servidor: {server_id}")
 
             # Forzar la escritura de los buffers locales hacia el broker
             producer.flush()
-            print(f"[*] Ciclo completado. Intervalo de espera: {REPORTING_INTERVAL_SECONDS}s")
+            print(f"[{obtener_hora()}] [*] Ciclo completado. Intervalo de espera: {REPORTING_INTERVAL_SECONDS}s")
             
             # Suspensión del hilo hasta el próximo ciclo
             time.sleep(REPORTING_INTERVAL_SECONDS)
@@ -110,15 +118,15 @@ def main():
     # 3. MANEJO DE EXCEPCIONES Y LIMPIEZA DE RECURSOS
     # ==========================================================================
     except KeyboardInterrupt:
-        print("\n[*] Ejecución interrumpida por señal de usuario (SIGINT).")
+        print(f"\n[{obtener_hora()}] [*] Ejecución interrumpida por señal de usuario (SIGINT).")
     except Exception as e:
-        print(f"\n[!] Excepción no controlada durante el ciclo principal: {e}")
+        print(f"\n[{obtener_hora()}] [!] Excepción no controlada durante el ciclo principal: {e}")
     finally:
         # Garantizar el cierre del socket de conexión con el broker
-        print("[*] Procediendo al cierre ordenado del cliente Kafka...")
+        print(f"[{obtener_hora()}] [*] Procediendo al cierre ordenado del cliente Kafka...")
         if 'producer' in locals():
             producer.close()
-        print("[*] Proceso finalizado.")
+        print(f"[{obtener_hora()}] [*] Proceso finalizado.")
 
 if __name__ == "__main__":
     main()
