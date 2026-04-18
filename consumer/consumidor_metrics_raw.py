@@ -1,4 +1,14 @@
-# TODO: Implement Kafka Consumer
+"""
+Módulo Consumidor RAW - Arquitectura de Monitoreo de Ingesta
+------------------------------------------------------------
+Este script actúa como el consumidor principal de ingesta de Apache Kafka. 
+Implementa un patrón de extracción y carga directa (EL) sin transformación. 
+Su responsabilidad exclusiva es capturar el flujo de métricas en bruto (raw data) 
+en tiempo real y persistirlo de forma inmutable en MongoDB, creando un registro 
+histórico auditable. Garantiza la semántica de entrega "At-Least-Once" mediante 
+la gestión manual de offsets y opera de forma aislada en su propio Consumer Group.
+"""
+
 import os
 import json
 from datetime import datetime

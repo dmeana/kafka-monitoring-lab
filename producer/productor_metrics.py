@@ -1,3 +1,15 @@
+"""
+Módulo Productor - Simulador de Telemetría y Publicador Kafka
+-------------------------------------------------------------
+Este script actúa como el origen de datos (Data Source) en la arquitectura 
+de monitoreo. Su responsabilidad es simular la generación continua de métricas 
+de hardware y red (telemetría) para una flota de servidores, estructurar los 
+eventos en formato JSON y publicarlos en un topic de Apache Kafka. 
+Implementa un patrón de publicación síncrona, exigiendo confirmación de entrega 
+(ACKs) al broker para garantizar la trazabilidad de extremo a extremo (End-to-End) 
+antes del procesamiento analítico downstream.
+"""
+
 import random
 import time
 from datetime import datetime, timezone
