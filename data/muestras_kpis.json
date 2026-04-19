@@ -1,0 +1,96 @@
+[{
+  "_id": {
+    "$oid": "69e399d07d0c5176259fcb9e"
+  },
+  "timestamp_kpi": "2026-04-18T16:48:48.515993",
+  "duracion_ventana_segundos": 24.27,
+  "numero_mensajes": 20,
+  "kpis": {
+    "promedio_cpu": 58.37,
+    "promedio_memoria": 56.04,
+    "promedio_disco": 26.77,
+    "promedio_red": 57.89,
+    "suma_errores": 0,
+    "tasa_procesamiento_msg_sec": 0.82
+  }
+},
+{
+  "_id": {
+    "$oid": "69e399f87d0c5176259fcb9f"
+  },
+  "timestamp_kpi": "2026-04-18T16:49:28.582261",
+  "duracion_ventana_segundos": 39.99,
+  "numero_mensajes": 20,
+  "kpis": {
+    "promedio_cpu": 48.04,
+    "promedio_memoria": 52.27,
+    "promedio_disco": 26.86,
+    "promedio_red": 51.9,
+    "suma_errores": 0,
+    "tasa_procesamiento_msg_sec": 0.5
+  }
+},
+{
+  "_id": {
+    "$oid": "69e39a207d0c5176259fcba0"
+  },
+  "timestamp_kpi": "2026-04-18T16:50:08.649554",
+  "duracion_ventana_segundos": 40.03,
+  "numero_mensajes": 20,
+  "kpis": {
+    "promedio_cpu": 33.44,
+    "promedio_memoria": 59.71,
+    "promedio_disco": 24.17,
+    "promedio_red": 41,
+    "suma_errores": 0,
+    "tasa_procesamiento_msg_sec": 0.5
+  }
+},
+{
+  "_id": {
+    "$oid": "69e39b87a3c7f66cd4c67c76"
+  },
+  "timestamp_kpi": "2026-04-18T16:56:07.164363",
+  "duracion_ventana_segundos": 4.1,
+  "numero_mensajes": 20,
+  "kpis": {
+    "promedio_cpu": 29.46,
+    "promedio_memoria": 60.71,
+    "promedio_disco": 28.83,
+    "promedio_red": 43.83,
+    "suma_errores": 3,
+    "tasa_procesamiento_msg_sec": 4.88
+  }
+},
+{
+  "_id": {
+    "$oid": "69e39bafa3c7f66cd4c67c77"
+  },
+  "timestamp_kpi": "2026-04-18T16:56:47.236185",
+  "duracion_ventana_segundos": 40.03,
+  "numero_mensajes": 20,
+  "kpis": {
+    "promedio_cpu": 40.06,
+    "promedio_memoria": 61.73,
+    "promedio_disco": 26.56,
+    "promedio_red": 51.51,
+    "suma_errores": 3,
+    "tasa_procesamiento_msg_sec": 0.5
+  }
+},
+{
+  "_id": {
+    "$oid": "69e39bea675e91d9f9932286"
+  },
+  "timestamp_kpi": "2026-04-18T16:57:46.939999",
+  "duracion_ventana_segundos": 3.5,
+  "numero_mensajes": 20,
+  "kpis": {
+    "promedio_cpu": 45.71,
+    "promedio_memoria": 55.14,
+    "promedio_disco": 27.31,
+    "promedio_red": 42.12,
+    "suma_errores": 0,
+    "tasa_procesamiento_msg_sec": 5.71
+  }
+}]

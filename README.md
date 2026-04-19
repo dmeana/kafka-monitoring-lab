@@ -22,6 +22,9 @@ kafka-monitoring-lab/
 ├── consumer/                             # Módulo de ingesta y procesamiento de datos
 │   ├── consumidor_metrics_kpi.py         # Script analítico: Calcula agregaciones en ventanas de 20 mensajes
 │   └── consumidor_metrics_raw.py         # Script de ingesta rápida: Guarda historial inmutable
+├── data/                                 # Muestras de datos exportadas desde MongoDB (Evidencias)
+│   ├── muestras_kpis.json                # Muestra de documentos de la colección de KPIs agregados
+│   └── muestras_raw.json                 # Muestra de documentos de la colección de métricas en bruto
 ├── docker/                               # Orquestación de contenedores
 │   └── docker-compose.yml                # Configuración para levantar el clúster local de Apache Kafka
 ├── docs/                                 # Documentación original y evidencias del proyecto

@@ -1,0 +1,300 @@
+[{
+  "_id": {
+    "$oid": "69e399bba7902b02710d5fc1"
+  },
+  "server_id": "web01",
+  "timestamp_utc": "2026-04-18T14:48:18.009002+00:00",
+  "metrics": {
+    "cpu_percent": 64.4,
+    "memory_percent": 37.13,
+    "disk_io_mbps": 27.54,
+    "network_mbps": 16.74,
+    "error_count": 0
+  },
+  "message_uuid": "d99c954c-0734-45f4-92a2-66be4fc4bf9d"
+},
+{
+  "_id": {
+    "$oid": "69e399bba7902b02710d5fc2"
+  },
+  "server_id": "web02",
+  "timestamp_utc": "2026-04-18T14:48:18.443674+00:00",
+  "metrics": {
+    "cpu_percent": 30.1,
+    "memory_percent": 39.17,
+    "disk_io_mbps": 34.77,
+    "network_mbps": 87,
+    "error_count": 0
+  },
+  "message_uuid": "3484c5d7-9903-4c01-963b-99817c524588"
+},
+{
+  "_id": {
+    "$oid": "69e399bba7902b02710d5fc3"
+  },
+  "server_id": "db01",
+  "timestamp_utc": "2026-04-18T14:48:18.447020+00:00",
+  "metrics": {
+    "cpu_percent": 68.9,
+    "memory_percent": 43.38,
+    "disk_io_mbps": 5.68,
+    "network_mbps": 80.32,
+    "error_count": 0
+  },
+  "message_uuid": "cf4838f3-8e38-40c4-a6d3-78f59204eb70"
+},
+{
+  "_id": {
+    "$oid": "69e399bba7902b02710d5fc4"
+  },
+  "server_id": "app01",
+  "timestamp_utc": "2026-04-18T14:48:18.451423+00:00",
+  "metrics": {
+    "cpu_percent": 13.82,
+    "memory_percent": 43.29,
+    "disk_io_mbps": 48.89,
+    "network_mbps": 73.02,
+    "error_count": 0
+  },
+  "message_uuid": "8ae18e2b-fc1d-4d12-a812-d6903e9c1adb"
+},
+{
+  "_id": {
+    "$oid": "69e399bca7902b02710d5fc5"
+  },
+  "server_id": "cache01",
+  "timestamp_utc": "2026-04-18T14:48:18.454593+00:00",
+  "metrics": {
+    "cpu_percent": 15.52,
+    "memory_percent": 76.66,
+    "disk_io_mbps": 22.44,
+    "network_mbps": 36.56,
+    "error_count": 0
+  },
+  "message_uuid": "307e5fe7-8c66-4fcb-b264-97cf3f376a49"
+},
+{
+  "_id": {
+    "$oid": "69e399bca7902b02710d5fc6"
+  },
+  "server_id": "web01",
+  "timestamp_utc": "2026-04-18T14:48:28.458897+00:00",
+  "metrics": {
+    "cpu_percent": 96.25,
+    "memory_percent": 61.73,
+    "disk_io_mbps": 49.62,
+    "network_mbps": 84.25,
+    "error_count": 0
+  },
+  "message_uuid": "f4896f32-7407-4522-9c43-e1a366572741"
+},
+{
+  "_id": {
+    "$oid": "69e399bca7902b02710d5fc7"
+  },
+  "server_id": "web02",
+  "timestamp_utc": "2026-04-18T14:48:28.463056+00:00",
+  "metrics": {
+    "cpu_percent": 72.99,
+    "memory_percent": 51.36,
+    "disk_io_mbps": 8.85,
+    "network_mbps": 54.42,
+    "error_count": 0
+  },
+  "message_uuid": "77099176-9ddd-46db-b866-0964904fbe23"
+},
+{
+  "_id": {
+    "$oid": "69e399bca7902b02710d5fc8"
+  },
+  "server_id": "db01",
+  "timestamp_utc": "2026-04-18T14:48:28.465729+00:00",
+  "metrics": {
+    "cpu_percent": 89.71,
+    "memory_percent": 65.58,
+    "disk_io_mbps": 10.14,
+    "network_mbps": 73.62,
+    "error_count": 0
+  },
+  "message_uuid": "446bf357-5120-406d-a0a3-85cb4758f1fa"
+},
+{
+  "_id": {
+    "$oid": "69e399bca7902b02710d5fc9"
+  },
+  "server_id": "app01",
+  "timestamp_utc": "2026-04-18T14:48:28.469081+00:00",
+  "metrics": {
+    "cpu_percent": 44.43,
+    "memory_percent": 82.8,
+    "disk_io_mbps": 39.92,
+    "network_mbps": 89.26,
+    "error_count": 0
+  },
+  "message_uuid": "df0b2a36-949d-4291-82fe-c8bb856d5f67"
+},
+{
+  "_id": {
+    "$oid": "69e399bca7902b02710d5fca"
+  },
+  "server_id": "cache01",
+  "timestamp_utc": "2026-04-18T14:48:28.472190+00:00",
+  "metrics": {
+    "cpu_percent": 65.45,
+    "memory_percent": 55.16,
+    "disk_io_mbps": 25.83,
+    "network_mbps": 70.85,
+    "error_count": 0
+  },
+  "message_uuid": "1c6e0d9d-df35-4e4e-af6c-b8de03bc402a"
+},
+{
+  "_id": {
+    "$oid": "69e399c6a7902b02710d5fcb"
+  },
+  "server_id": "web01",
+  "timestamp_utc": "2026-04-18T14:48:38.475836+00:00",
+  "metrics": {
+    "cpu_percent": 42.28,
+    "memory_percent": 54.44,
+    "disk_io_mbps": 29.43,
+    "network_mbps": 96.53,
+    "error_count": 0
+  },
+  "message_uuid": "3e32205b-16ca-44ba-8174-dbf32d20bf43"
+},
+{
+  "_id": {
+    "$oid": "69e399c6a7902b02710d5fcc"
+  },
+  "server_id": "web02",
+  "timestamp_utc": "2026-04-18T14:48:38.479456+00:00",
+  "metrics": {
+    "cpu_percent": 97.08,
+    "memory_percent": 68.84,
+    "disk_io_mbps": 49.62,
+    "network_mbps": 8.48,
+    "error_count": 0
+  },
+  "message_uuid": "27563c0d-a996-4291-a828-e55f4cb04377"
+},
+{
+  "_id": {
+    "$oid": "69e399c6a7902b02710d5fcd"
+  },
+  "server_id": "db01",
+  "timestamp_utc": "2026-04-18T14:48:38.482722+00:00",
+  "metrics": {
+    "cpu_percent": 33.48,
+    "memory_percent": 66.83,
+    "disk_io_mbps": 29.51,
+    "network_mbps": 45.58,
+    "error_count": 0
+  },
+  "message_uuid": "b4742a91-43af-4144-917d-18076f457681"
+},
+{
+  "_id": {
+    "$oid": "69e399c6a7902b02710d5fce"
+  },
+  "server_id": "app01",
+  "timestamp_utc": "2026-04-18T14:48:38.485514+00:00",
+  "metrics": {
+    "cpu_percent": 88.39,
+    "memory_percent": 48.02,
+    "disk_io_mbps": 11.75,
+    "network_mbps": 57.66,
+    "error_count": 0
+  },
+  "message_uuid": "d2556142-9dd1-4cd7-ade3-769d53a55309"
+},
+{
+  "_id": {
+    "$oid": "69e399c6a7902b02710d5fcf"
+  },
+  "server_id": "cache01",
+  "timestamp_utc": "2026-04-18T14:48:38.489768+00:00",
+  "metrics": {
+    "cpu_percent": 49.22,
+    "memory_percent": 50.74,
+    "disk_io_mbps": 12.56,
+    "network_mbps": 79.25,
+    "error_count": 0
+  },
+  "message_uuid": "94e1c1f8-3ab5-4fc4-8d93-35c1cc79b1b5"
+},
+{
+  "_id": {
+    "$oid": "69e399d0a7902b02710d5fd0"
+  },
+  "server_id": "web01",
+  "timestamp_utc": "2026-04-18T14:48:48.493846+00:00",
+  "metrics": {
+    "cpu_percent": 43.36,
+    "memory_percent": 38.96,
+    "disk_io_mbps": 5.1,
+    "network_mbps": 30.07,
+    "error_count": 0
+  },
+  "message_uuid": "f4ebba08-057b-4d99-a22a-8dfea794c3a8"
+},
+{
+  "_id": {
+    "$oid": "69e399d0a7902b02710d5fd1"
+  },
+  "server_id": "web02",
+  "timestamp_utc": "2026-04-18T14:48:48.498731+00:00",
+  "metrics": {
+    "cpu_percent": 56.17,
+    "memory_percent": 30.4,
+    "disk_io_mbps": 30.21,
+    "network_mbps": 25.91,
+    "error_count": 0
+  },
+  "message_uuid": "8868f00d-14e7-4e4f-bc4d-6cd5bf792b19"
+},
+{
+  "_id": {
+    "$oid": "69e399d0a7902b02710d5fd2"
+  },
+  "server_id": "db01",
+  "timestamp_utc": "2026-04-18T14:48:48.503100+00:00",
+  "metrics": {
+    "cpu_percent": 74.8,
+    "memory_percent": 96.21,
+    "disk_io_mbps": 36.68,
+    "network_mbps": 7.73,
+    "error_count": 0
+  },
+  "message_uuid": "feee0f81-2c09-4b3d-87ba-7433aeae8e13"
+},
+{
+  "_id": {
+    "$oid": "69e399d0a7902b02710d5fd3"
+  },
+  "server_id": "app01",
+  "timestamp_utc": "2026-04-18T14:48:48.506983+00:00",
+  "metrics": {
+    "cpu_percent": 34.1,
+    "memory_percent": 72.37,
+    "disk_io_mbps": 42.61,
+    "network_mbps": 87.63,
+    "error_count": 0
+  },
+  "message_uuid": "3332979d-451d-4cbf-96f1-fa8d5ebc5853"
+},
+{
+  "_id": {
+    "$oid": "69e399d0a7902b02710d5fd4"
+  },
+  "server_id": "cache01",
+  "timestamp_utc": "2026-04-18T14:48:48.510804+00:00",
+  "metrics": {
+    "cpu_percent": 87.03,
+    "memory_percent": 37.64,
+    "disk_io_mbps": 14.24,
+    "network_mbps": 52.91,
+    "error_count": 0
+  },
+  "message_uuid": "8a2b798c-9304-4999-8d7c-71bebd6a57e9"
+}]
