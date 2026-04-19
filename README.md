@@ -1,7 +1,7 @@
 # RA4 BDA · Arquitectura de Monitoreo en "Streaming" con Apache Kafka y MongoDB
 
 **Versión:** `v1.0-entrega`
-**Contexto:** Proyecto de arquitectura de datos en tiempo real y tolerancia a fallos para el curso de especialización en Sistemas de Big Data.
+**Contexto:** Proyecto de arquitectura de datos en tiempo real y tolerancia a fallos
 
 Este repositorio contiene la implementación de una tubería de datos (*Data Pipeline*) asíncrona para la monitorización de telemetría de servidores (CPU, Memoria, Red, Errores). Todo el ecosistema está orquestado mediante el servidor intermediario **Apache Kafka** y los datos se persisten en la nube utilizando **MongoDB Atlas**.
 
@@ -10,7 +10,7 @@ Este repositorio contiene la implementación de una tubería de datos (*Data Pip
 ## Objetivo del Proyecto
 El proyecto implementa una **arquitectura de procesamiento de eventos (Event-Driven)** orientada a la simulación, ingesta y analítica en tiempo real:
 1. **Generación (Productor):** Simulación de telemetría de un clúster de servidores y publicación continua de mensajes en un canal de Kafka con acuse de recibo síncrono.
-2. **Ingesta Cruda (Consumidor RAW):** Suscripción al canal para extraer los datos al vuelo y volcarlos de manera inmutable en una colección de base de datos (Data Lake).
+2. **Ingesta Cruda (Consumidor RAW):** Suscripción al canal para extraer los datos al vuelo y volcarlos de manera inmutable en una colección de base de datos.
 3. **Analítica en Tiempo Real (Consumidor KPI):** Implementación de una ventana de cálculo por bloques (*Tumbling Window*) que acumula mensajes, procesa promedios matemáticos y guarda los resultados agregados, garantizando la semántica de "Al menos una entrega" (*At-Least-Once*).
 
 ---
