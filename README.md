@@ -7,6 +7,12 @@ Este repositorio contiene la implementación de una tubería de datos (*Data Pip
 
 ---
 
+## Arquitectura del proyecto
+
+![Arquitectura proyecto](./img/arquitectura_proyecto.png)
+
+---
+
 ## Objetivo del Proyecto
 El proyecto implementa una **arquitectura de procesamiento de eventos (Event-Driven)** orientada a la simulación, ingesta y analítica en tiempo real:
 1. **Generación (Productor):** Simulación de telemetría de un clúster de servidores y publicación continua de mensajes en un canal de Kafka con acuse de recibo síncrono.
@@ -36,11 +42,6 @@ kafka-monitoring-lab/
 ├── .gitignore                            # Exclusión de archivos temporales y credenciales
 └── README.md                             # Documentación principal del proyecto (Este archivo)
 ```
----
-
-## Arquitectura del proyecto
-
-![Arquitectura proyecto](./img/arquitectura_proyecto.png)
 
 ---
 
